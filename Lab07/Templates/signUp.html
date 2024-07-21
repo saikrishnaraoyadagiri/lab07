@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="signup" style="padding-left: 20px;">
+    {% if conditions_not_met %}
+        <ul>
+            {% for condition in conditions_not_met %}
+                <li style="color: red;">{{ condition }}</li>
+            {% endfor %}
+        </ul>
+    {%endif%}
+    <h3 style="padding-top:20px"> Welcome, SignUp here</h3>
+    <p> Please Enter Your Details </p>
+    <p> Password should satisy these conditions:<br>
+        <div class="restrictions" style="padding-left: 20px;">
+            1.It should contain atleast one lowercase letter<br>
+            2.It should contain atleast one uppercase letter<br>
+            3.It should end with a number<br>
+            4.It should be atleast 8 characters long
+        </div>
+        
+    </p>
+    <div class="signupelements">
+        <form action="/validateSignup" method="POST" style="display: inline-block;">
+          
+            <label for="Firstname" style="display: inline-block; vertical-align: top; width: 200px;">Firstname:</label>
+            <input type="text" placeholder="Enter Firstname" name="firstname" required><br><br>
+            <label for="Lastname" style="display: inline-block; vertical-align: top; width: 200px;">Lastname:</label>
+            <input type="text" placeholder="Enter Lastname" name="lastname" required><br><br>
+            <label for="email" style="display: inline-block; vertical-align: top; width: 200px;">Email:   </label>
+            <input type="email" placeholder="Enter Email" name="email" required><br><br>
+            <label for="password" style="display: inline-block; vertical-align: top; width: 200px;">Password:</label>
+            <input type="password" placeholder="Enter Password" name="password" required><br><br>
+            <label for="confirmPassword" style="display: inline-block; vertical-align: top; width: 200px;">Confirm Password:</label>
+            <input type="password" placeholder="Re-Enter Password" name="confirmPassword" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <p>Already have an account <a href="/" >SignIn here</a></p>
+</div>
+{% endblock %}
